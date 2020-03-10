@@ -19,37 +19,42 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2    
     - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=name;]$(echo ${GITHUB_REF#refs/heads/})"
       id: branch
+      shell: bash
+      run: echo ::set-output name=name::$(echo ${GITHUB_HEAD_REF#refs/heads/})
     - name: Start test1 workflow
+      if: steps.branch.outputs.name == 'feature1_new_title'
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         event-type: start-test1
-      if: ${{ steps.branch.outputs.name }} == "feature1_new_title"
     - name: Start test2 workflow
+      if: steps.branch.outputs.name == 'feature2_short_description'
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.REPO_ACCESS_TOKENN }}
         event-type: start-test2
-      if: ${{ steps.branch.outputs.name }} == "feature2_short_description"
     - name: Start test3 workflow
+      if: steps.branch.outputs.name == 'feature3_character_traits'
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         event-type: start-test3
-      if: ${{ steps.branch.outputs.name }} == "feature3_character_traits"   
     - name: Start test4 workflow
+      if: steps.branch.outputs.name == 'feature4_quote'
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         event-type: start-test4
-      if: ${{ steps.branch.outputs.name }} == "feature4_quote"  
+    - name: Start test5 workflow
+      if: steps.branch.outputs.name == 'feature5_image'
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        event-type: start-test5
     - name: Start test5 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         event-type: start-test5
-      if: ${{ steps.branch.outputs.name }} == "feature5_image"
    
