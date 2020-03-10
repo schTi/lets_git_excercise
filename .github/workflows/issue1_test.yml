@@ -6,7 +6,7 @@ name: issue1_test
 on:
   push:
     branches:
-      - feature1_new_title
+      - add-workflow-open-pr
   pull_request:
     types: [ opened, reopened ]
 
