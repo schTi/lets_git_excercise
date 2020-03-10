@@ -25,35 +25,35 @@ jobs:
     - name: Start test1 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         event-type: start-test1
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
       if: ${{ steps.branch.outputs.name }} == "feature1_new_title"
     - name: Start test2 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         event-type: start-test2
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
       if: ${{ steps.branch.outputs.name }} == "feature2_short_description"
     - name: Start test3 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         event-type: start-test3
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
       if: ${{ steps.branch.outputs.name }} == "feature3_character_traits"   
     - name: Start test4 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         event-type: start-test4
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
       if: ${{ steps.branch.outputs.name }} == "feature4_quote"  
     - name: Start test5 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         event-type: start-test5
         client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
       if: ${{ steps.branch.outputs.name }} == "feature5_image"
