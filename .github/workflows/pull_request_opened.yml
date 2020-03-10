@@ -53,10 +53,10 @@ jobs:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         event-type: start-test5
     - name: test
-      run: echo ${{ secrets.REPO_ACCESS_TOKEN }}
+      run: echo ${{ secrets.GITHUB_TOKEN }}
     - name: Start test5 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
-        token: ${{ secrets.REPO_ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         event-type: start-test5
    
