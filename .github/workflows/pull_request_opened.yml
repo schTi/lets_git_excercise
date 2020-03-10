@@ -5,7 +5,7 @@ name: pull_request_opened
 # events but only for the master branch
 on: 
   pull_request:
-    types: [ opened ]
+    types: [ opened, reopened ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -52,6 +52,8 @@ jobs:
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         event-type: start-test5
+    - name: test
+      run: echo ${{ secrets.REPO_ACCESS_TOKEN }}
     - name: Start test5 workflow
       uses: peter-evans/repository-dispatch@v1
       with:
