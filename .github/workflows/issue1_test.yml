@@ -8,13 +8,12 @@ on:
     branches:
       - feature1_new_title
   pull_request:
-    types: [ opened ]
-    branches:
-      - feature1_new_title
+    types: [ opened, reopened ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: GITHUB_HEAD_REF == refs/heads/add-workflow-open-pr
     strategy:
       matrix:
         python-version: [ '3.x' ]
