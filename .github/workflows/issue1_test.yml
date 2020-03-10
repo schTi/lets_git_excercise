@@ -6,14 +6,14 @@ name: issue1_test
 on:
   push:
     branches:
-      - add-workflow-open-pr
+      - feature1_new_title
   pull_request:
-    types: [ opened, reopened ]
+    types: [ opened ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.head_ref == 'add-workflow-open-pr' || github.ref == 'refs/heads/add-workflow-open-pr'
+    if: github.head_ref == 'feature1_new_title' || github.ref == 'refs/heads/feature1_new_title'
     strategy:
       matrix:
         python-version: [ '3.x' ]
@@ -24,7 +24,6 @@ jobs:
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-      - run: echo ${{ github.ref }}
       - run: python tests/Aufgabe1_test.py > test-output.txt
       - run: echo ::set-output name=result::$(grep "Yes" test-output.txt | wc -l)
         id: test
