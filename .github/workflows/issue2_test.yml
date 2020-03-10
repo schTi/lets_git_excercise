@@ -7,6 +7,8 @@ on:
   push:
     branches: 
       - feature2_short_description
+  repository_dispatch:
+    types: [start-test2]
 
 jobs:
   build:
